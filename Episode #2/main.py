@@ -14,5 +14,4 @@ async def on_ready():
 async def ping(interaction):
     await interaction.response.send_message(f"Pong!")
 
-
 bot.run("token")
