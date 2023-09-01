@@ -13,7 +13,7 @@ class Clear(commands.Cog):
     @commands.slash_command()
     async def clear(self, interaction, amount: int):
         # Создаем эмбед (вложенное сообщение) с информацией о количестве удаленных сообщений.
-        embed = disnake.Embed(title="Clear", description=f"Deleted {amount} messages", color=0x00ff00)
+        embed = disnake.Embed(title="Очистка", description=f"Вы удалили {amount} сообщений.", color=0x00ff00)
         # Устанавливаем миниатюру (thumbnail) для эмбеда, используя URL аватара бота.
         embed.set_thumbnail(url=self.bot.user.avatar.url)
         # Отправляем эмбед как ответ на взаимодействие (interaction), сделав его эфемеральным (исчезающим).

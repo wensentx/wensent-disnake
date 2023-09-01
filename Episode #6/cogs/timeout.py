@@ -20,7 +20,7 @@ class Timeout(commands.Cog):
         await member.timeout(until=time, reason=reason)
         # Отправляем эфемеральное сообщение с информацией о наложенном таймауте.
         await interaction.response.send_message(
-            f"Time out {member.mention} for {time} seconds for {reason}",
+            f"Пользователь {member.mention} был затайм-аутен до {time.strftime('%H:%M:%S %d.%m.%Y')}",
             ephemeral=True
         )
 
@@ -31,7 +31,7 @@ class Timeout(commands.Cog):
         await member.timeout(until=None, reason=None)
         # Отправляем эфемеральное сообщение с информацией об удалении таймаута.
         await interaction.response.send_message(
-            f"Untimed out {member.mention}",
+            f"Пользователь {member.mention} был разтайм-аутен",
             ephemeral=True
         )
 

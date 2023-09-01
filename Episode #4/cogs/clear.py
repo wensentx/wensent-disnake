@@ -12,7 +12,7 @@ class Clear(commands.Cog):
     @commands.slash_command()
     async def clear(self, interaction, amount: int):
         # Отправляем эфемерное (исчезающее) сообщение с информацией о количестве удаленных сообщений.
-        await interaction.response.send_message(f"Deleted {amount} messages", ephemeral=True)
+        await interaction.response.send_message(f"Вы удалили {amount} сообщений.", ephemeral=True)
         # Удаляем сообщения в текущем канале, включая вызванную команду, в количестве "amount + 1".
         await interaction.channel.purge(limit=amount + 1)
 

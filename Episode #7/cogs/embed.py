@@ -13,15 +13,15 @@ class Embed(commands.Cog):
     @commands.slash_command()
     async def embed(self, interaction):
         # Создаем вложенный объект Embed (эмбед)
-        embed = disnake.Embed(title="Embed Title", description="Embed Description", color=0x00ff00)
+        embed = disnake.Embed(title="Название эмбеда", description="Описание эмбеда", color=0x00ff00)
         # Добавляем три поля в эмбед с соответствующими названиями и значениями
-        embed.add_field(name="Field 1", value="Value 1", inline=False)
-        embed.add_field(name="Field 2", value="Value 2", inline=False)
-        embed.add_field(name="Field 3", value="Value 3", inline=False)
+        embed.add_field(name="Название поля 1", value="Значение поля 1", inline=False)
+        embed.add_field(name="Название поля 2", value="Значение поля 2", inline=False)
+        embed.add_field(name="Название поля 3", value="Значение поля 3", inline=False)
         # Устанавливаем текст для нижнего колонтитула (footer) эмбеда
-        embed.set_footer(text="Embed Footer")
+        embed.set_footer(text="Нижний колонтитул")
         # Устанавливаем имя автора эмбеда
-        embed.set_author(name="Embed Author")
+        embed.set_author(name="Автор эмбеда")
         # Устанавливаем миниатюру (thumbnail) для эмбеда, используя URL аватара бота
         embed.set_thumbnail(url=self.bot.user.avatar.url)
         # Устанавливаем изображение (image) для эмбеда, также используя URL аватара бота

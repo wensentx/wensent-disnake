@@ -17,14 +17,14 @@ class Timeout(commands.Cog):
         # Проверяем, что автор команды не пытается замутить самого себя.
         if member == interaction.author:
             return await interaction.response.send_message(
-                "You can't time out yourself",
+                "Вы не можете замутить самого себя",
                 ephemeral=True
             )
 
         # Проверяем, что время мута не может быть меньше 1 минуты.
         if time < 1:
             return await interaction.response.send_message(
-                "Time can't be less than 1 minute",
+                "Вы не можете замутить пользователя на меньше 1 минуты",
                 ephemeral=True
             )
 
@@ -36,8 +36,9 @@ class Timeout(commands.Cog):
         cool_time = disnake.utils.format_dt(time, style="R")
         # Создаем эмбед (вложенное сообщение) с информацией о наложенном таймауте.
         embed = disnake.Embed(
-            title="Timeout",
-            description=f"{member.mention} has been timed out {cool_time} for {reason}",
+            title="Таймаут",
+            description=f"Пользователь {member.mention} был затайм-аутен. Причина: {reason}. "
+                        f"Таймаут будет снят {cool_time}",
             color=0x2F3136
         ).set_thumbnail(url=member.display_avatar.url)
         # Отправляем эмбед как ответ на взаимодействие (interaction), сделав его эфемеральным (исчезающим).
@@ -50,7 +51,7 @@ class Timeout(commands.Cog):
         await member.timeout(until=None, reason=None)
         # Отправляем эфемеральное сообщение с информацией об удалении таймаута.
         await interaction.response.send_message(
-            f"Untimed out {member.mention}",
+            f"Таймаут с пользователя {member.mention} был снят",
             ephemeral=True
         )
 
