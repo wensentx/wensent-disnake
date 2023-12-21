@@ -46,3 +46,11 @@ class UsersDataBase:
             query = 'UPDATE users SET money = money + ?, premium = premium + ? WHERE id = ?'
             await cursor.execute(query, (money, premium, user.id))
             await db.commit()
+
+    # Метод "get_top" возвращает список пользователей, отсортированный по количеству денег.
+    async def get_top(self):
+        async with aiosqlite.connect(self.name) as db:
+            cursor = await db.cursor()
+            query = 'SELECT * FROM users ORDER BY money DESC'
+            await cursor.execute(query)
+            return await cursor.fetchall()
