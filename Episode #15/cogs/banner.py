@@ -16,7 +16,7 @@ class Banner(commands.Cog):
     @tasks.loop(minutes=1)
     async def update_banner(self):
         await self.bot.wait_until_ready()
-        guild = self.bot.get_guild(930922641940938792)
+        guild = self.bot.get_guild(...) # Укажите ID сервера
         with Image.open("Banner.png") as img:
             draw = ImageDraw.Draw(img)
 
@@ -26,11 +26,11 @@ class Banner(commands.Cog):
             if (total, voice) != self.last:
                 x = 1292
                 y = 311
-                draw.text((x, y), str(total), font=font)
+                draw.text((x, y), str(voice), font=font)
 
                 x = 1292
                 y = 681
-                draw.text((x, y), str(voice), font=font)
+                draw.text((x, y), str(total), font=font)
                 img_bytes = io.BytesIO()
                 img.save(img_bytes, format="PNG")
                 img_bytes.seek(0)
